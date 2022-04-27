@@ -4,10 +4,10 @@ import CustomInput from '../Input/CustomInput'
 import CustomBtn from '../Button/CustomBtn'
 export default function CustomModals({myData}) {
     const [show, setShow] = useState(false);
-  
+    const [firstname,setFirstname] = useState('');
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-  
+
     return (
       <>
         <i class="fas fa-cogs" onClick={handleShow} style={{fontSize:'40px',marginTop:'25px'}}></i>
@@ -17,9 +17,11 @@ export default function CustomModals({myData}) {
             <Modal.Title>Update User</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              Name: <CustomInput placeholder="Name" text_inside_input={myData.name} />
-              Username :<CustomInput text_inside_input={myData.username}/>
-              Email :<CustomInput text_inside_input={myData.email} />
+              <span>My Name is : {firstname}</span><br></br>
+              
+              Name: <CustomInput onChange={(e)=> console.log(e.target.placeholder)} test="test" placeholder="Name" text_inside_input={myData.name} />
+              Username :<CustomInput onChange={(e)=> setFirstname(e.target.value)}  text_inside_input={myData.username}/>
+              Email :<CustomInput onChange={(e)=> setFirstname(e.target.value)}  text_inside_input={myData.email} />
               <hr></hr>
               <div>
                   <label><b>Adress:</b></label><hr></hr>
